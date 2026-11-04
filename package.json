@@ -12,7 +12,7 @@
     "keywords": [],
     "type": "module",
     "dependencies": {
-        "@dantenl/umejs": "^1.4.0",
+        "@dantenl/umejs": "^1.4.1",
         "express": "^5.3.0",
         "express-rate-limit": "^8.7.2",
         "lite-matter": "^0.1.2",
