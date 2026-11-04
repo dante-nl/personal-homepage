@@ -88,7 +88,17 @@ if (typeof hljs !== 'undefined') {
 // add copy buttons to code blocks
 function addCopyButton(codeElement) {
     const pre = codeElement.closest('pre');
-    if (!pre || pre.querySelector('.copy-btn')) return;
+    if (!pre) return;
+
+    let wrapper = pre.parentElement;
+    if (!wrapper.classList.contains('code-wrapper')) {
+        wrapper = document.createElement('div');
+        wrapper.className = 'code-wrapper';
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+    }
+
+    if (wrapper.querySelector('.copy-btn')) return;
 
     const btn = document.createElement('button');
     btn.className = 'copy-btn';
@@ -106,7 +116,7 @@ function addCopyButton(codeElement) {
         }
     });
 
-    pre.appendChild(btn);
+    wrapper.appendChild(btn);
 }
 
 // show confirm feedback
