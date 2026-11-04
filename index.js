@@ -56,6 +56,10 @@ const umeConfig = ume({
             helper: () => String(new Date().getFullYear()),
             cache: false,
         },
+        siteUrl: {
+            helper: (req) => req.protocol + '://' + req.get('host') + req.originalUrl,
+            cache: false,
+        },
     },
     builders: [projectsIndexBuilder],
     nextUsage: true,
