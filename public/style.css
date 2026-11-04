@@ -1,0 +1,705 @@
+/* ---------------------------------------------------------------------------
+   Fonts — self-hosted, one file per weight
+   --------------------------------------------------------------------------- */
+/* ! Fonts are under a seperate license, view it at ./fonts/LICENSE.txt ! */
+@font-face {
+    font-family: 'Atkinson Hyperlegible Next';
+    src: url('/fonts/AtkinsonHyperlegibleNext.ttf') format('truetype');
+    font-weight: 200 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Atkinson Hyperlegible Next';
+    src: url('/fonts/AtkinsonHyperlegibleNext-Italic.ttf') format('truetype');
+    font-weight: 200 800;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Atkinson Hyperlegible Mono';
+    src: url('/fonts/AtkinsonHyperlegibleMono.ttf') format('truetype');
+    font-weight: 200 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Atkinson Hyperlegible Mono';
+    src: url('/fonts/AtkinsonHyperlegibleMono-Italic.ttf') format('truetype');
+    font-weight: 200 800;
+    font-style: italic;
+    font-display: swap;
+}
+/* ---------------------------------------------------------------------------
+   Tokens
+   --------------------------------------------------------------------------- */
+/* --- tokens --- */
+:root {
+    color-scheme: dark;
+    --bg: #2d3047;
+    --bg-elevated: #343850;
+    --text: #d9f7fa;
+    --text-muted: #a7c2c8;
+    --link: #00a8e8;
+    --link-hover: #5cc8f2;
+
+    /* Gradient text (must contrast with --bg) */
+    --text-grad-a: #ff51eb;
+    --text-grad-b: #ede342;
+
+    /* Gradient fills (paired with dark text on the fill) — stay bright */
+    --fill-grad-a: #ff51eb;
+    --fill-grad-b: #ede342;
+
+    --badge-live: #06d6a0;
+    --badge-archived: #9aa5b1;
+    --badge-text: #10161f;
+    --focus: #ede342;
+
+    --font-body: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    --font-code: 'Atkinson Hyperlegible Mono', ui-monospace, monospace;
+
+    --radius: 10px;
+    --measure: 68ch;
+    --tag-size: 0.8125rem;
+}
+
+:root[data-theme='light'] {
+    color-scheme: light;
+    --bg: #fbfbf8;
+    --bg-elevated: #ffffff;
+    --text: #1b2430;
+    --text-muted: #4b5563;
+    --link: #0063a6;
+    --link-hover: #00456f;
+
+    /* Darkened for readable gradient *text* on light bg */
+    --text-grad-a: #d6006e;
+    --text-grad-b: #b84d00;
+
+    /* Fill gradient stays bright in light mode — paired with --badge-text */
+    --fill-grad-a: #ff51eb;
+    --fill-grad-b: #ede342;
+
+    --badge-live: #067a5c;
+    --badge-archived: #5b6675;
+    --badge-text: #ffffff;
+    --focus: #005f9e;
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+    margin: 0 0 0.5em;
+    text-wrap: balance;
+}
+p {
+    margin: 0 0 1em;
+    max-width: var(--measure);
+}
+
+a {
+    color: var(--link);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    color: var(--link-hover);
+}
+
+:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ---------------------------------------------------------------------------
+   Utilities
+   --------------------------------------------------------------------------- */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--bg-elevated);
+    padding: 0.75rem 1rem;
+    z-index: 10;
+}
+.skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+}
+
+.text-gradient {
+    color: var(--text-grad-a);
+    background: linear-gradient(to right, var(--text-grad-a) 0%, var(--text-grad-b) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Code-tag decoration. The string after the slash is the accessible
+   alternative text — empty means "decorative, skip it". Browsers that
+   don't support that syntax will read the tag aloud; acceptable. */
+.tagged {
+    position: relative;
+}
+.tagged::before,
+.tagged::after {
+    display: block;
+    font-family: var(--font-code);
+    font-size: var(--tag-size);
+    font-weight: 400;
+    color: var(--text-muted);
+    opacity: 0.65;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+}
+h1.tagged::before {
+    content: '<h1>' / '';
+    margin-bottom: 0.35rem;
+}
+h1.tagged::after {
+    content: '</h1>' / '';
+    margin-top: 0.5rem;
+}
+h2.tagged::before {
+    content: '<h2>' / '';
+    margin-bottom: 0.25rem;
+}
+h2.tagged::after {
+    content: '</h2>' / '';
+    margin-top: 0.35rem;
+}
+.no-tags::before,
+.no-tags::after {
+    content: none;
+}
+
+/* Tighten heading bottom margin now that ::after adds a line */
+h1.tagged {
+    margin-bottom: 0.5em;
+}
+h2.tagged {
+    margin-bottom: 0.5em;
+}
+
+/* ---------------------------------------------------------------------------
+   Layout
+   --------------------------------------------------------------------------- */
+.site-header,
+main,
+.site-footer {
+    width: min(100% - 2.5rem, 1100px);
+    margin-inline: auto;
+}
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1.5rem;
+}
+
+.brand {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.theme-toggle {
+    font: inherit;
+    font-size: 0.875rem;
+    color: var(--text);
+    background: transparent;
+    border: 1px solid var(--text-muted);
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+    cursor: pointer;
+}
+.theme-toggle:hover {
+    border-color: var(--text);
+}
+
+.hero {
+    padding-block: clamp(2rem, 8vw, 6rem) clamp(2rem, 6vw, 4rem);
+    max-width: 46rem;
+}
+.hero h1 {
+    font-size: clamp(2.25rem, 1.5rem + 4vw, 4.5rem);
+    letter-spacing: -0.02em;
+}
+.lede {
+    font-size: 1.125em;
+    color: var(--text-muted);
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.button {
+    display: inline-block;
+    font: inherit;
+    font-weight: 700;
+    padding: 0.7rem 1.35rem;
+    border-radius: 999px;
+    border: none;
+
+    background: linear-gradient(to right, var(--fill-grad-a) 0%, var(--fill-grad-b) 100%);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    color: #10161f;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow:
+        0 1px 2px rgb(0 0 0 / 0.08),
+        0 6px 16px -6px rgb(0 0 0 / 0.2);
+    transition:
+        filter 120ms ease,
+        transform 120ms ease,
+        box-shadow 120ms ease;
+}
+.button:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+    color: #10161f;
+    box-shadow:
+        0 2px 4px rgb(0 0 0 / 0.1),
+        0 8px 20px -8px rgb(0 0 0 / 0.25);
+}
+.button:active {
+    transform: translateY(0);
+    filter: brightness(0.98);
+}
+.button:disabled {
+    opacity: 0.6;
+    cursor: progress;
+    filter: none;
+}
+
+.button-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 2px solid currentColor;
+    padding: calc(0.7rem - 2px) calc(1.35rem - 2px);
+    box-shadow: none;
+}
+.button-ghost:hover {
+    background: color-mix(in srgb, var(--text) 8%, transparent);
+    filter: none;
+    box-shadow: none;
+    color: var(--text);
+}
+
+.section {
+    padding-block: clamp(2rem, 5vw, 3.5rem);
+}
+.section-note {
+    color: var(--text-muted);
+}
+
+.site-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 3rem 2rem;
+    border-top: 1px solid var(--bg-elevated);
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+}
+.footer-links {
+    display: flex;
+    gap: 1.25rem;
+    margin: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Cards
+   --------------------------------------------------------------------------- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.card {
+    position: relative; /* anchor for the stretched link */
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-elevated);
+    border: 2px solid transparent;
+    border-radius: var(--radius);
+    background-image:
+        linear-gradient(var(--bg-elevated), var(--bg-elevated)),
+        linear-gradient(321deg, var(--fill-grad-a), var(--fill-grad-b));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    overflow: hidden;
+    transition:
+        transform 160ms ease,
+        box-shadow 160ms ease;
+}
+.card:hover,
+.card:focus-within {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.18);
+}
+
+.card-media {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--bg);
+    border-bottom: 1px solid rgb(255 255 255 / 0.06);
+}
+.card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.card-body {
+    padding: 1rem 1.25rem 1.25rem;
+}
+.card-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+.card-top h3 {
+    font-size: 1.25rem;
+    margin: 0;
+}
+.card-top h3 a {
+    color: var(--text);
+    text-decoration: none;
+}
+.card-top h3 a::after {
+    content: '';
+    position: absolute;
+    inset: 0; /* stretched link: whole card is clickable */
+}
+
+.card-summary {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    margin-block: 0.5rem 0.75rem;
+}
+.card-year {
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+    margin: 0;
+}
+
+.badge {
+    font-size: 0.6875rem;
+    font-family: var(--font-code);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: var(--badge-archived);
+    color: var(--badge-text);
+    white-space: nowrap;
+}
+.badge-live {
+    background: var(--badge-live);
+}
+
+.stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.5rem;
+}
+.stack li {
+    font-size: 0.75rem;
+    font-family: var(--font-code);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--text-muted);
+    color: var(--text-muted);
+}
+
+/* ---------------------------------------------------------------------------
+   Other work
+   --------------------------------------------------------------------------- */
+.plain-list {
+    padding-left: 1.25rem;
+    max-width: var(--measure);
+}
+.plain-list li {
+    margin-bottom: 0.75rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Contact form
+   --------------------------------------------------------------------------- */
+.contact-form {
+    max-width: 34rem;
+}
+
+.hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+.field label {
+    font-weight: 700;
+    font-size: 0.9375rem;
+}
+.req {
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+input[type='text'],
+input[type='email'],
+textarea {
+    font: inherit;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--text-muted);
+    border-radius: 8px;
+    padding: 0.6rem 0.75rem;
+    width: 100%;
+}
+input:focus-visible,
+textarea:focus-visible {
+    border-color: var(--focus);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 8rem;
+}
+
+.form-status {
+    min-height: 1.5em;
+    font-weight: 700;
+    margin-block: 0.75rem 0.5rem;
+}
+.form-privacy {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+}
+
+/* ---------------------------------------------------------------------------
+   Motion / print
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+    .card:hover {
+        transform: none;
+    }
+}
+
+/* ---------------------------------------------------------------------------
+   Project Page
+   --------------------------------------------------------------------------- */
+.project-page {
+    max-width: 52rem;
+    margin-inline: auto;
+    padding-block: 2rem 4rem;
+}
+
+.project-meta-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.back-link {
+    font-size: 0.875rem;
+    font-family: var(--font-code);
+    text-decoration: none;
+}
+
+.project-hero .lede {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Hide empty links (like an empty repo link) */
+.project-links a[href=''] {
+    display: none;
+}
+
+.project-stack {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.project-hero-image {
+    margin-block: 2rem;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--bg-elevated);
+    box-shadow: 0 4px 20px rgb(0 0 0 / 0.1);
+}
+
+.project-hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Markdown body styles (prose) */
+.prose {
+    line-height: 1.7;
+}
+
+.prose h2 {
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.prose h3 {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.prose ul,
+.prose ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.prose li {
+    margin-bottom: 0.5rem;
+}
+
+.prose pre {
+    background: var(--bg-elevated);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    border: 1px solid var(--text-muted);
+    position: relative;
+}
+
+.prose code {
+    font-family: var(--font-code);
+    font-size: 0.875em;
+    background: var(--bg-elevated);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+}
+
+.prose pre code {
+    background: transparent;
+    padding: 0;
+}
+
+.prose pre code.hljs {
+    background: transparent;
+    padding: 0;
+    font-size: 0.875em;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.25rem 0.6rem;
+    font: 400 0.75rem / 1 var(--font-code);
+    color: var(--text-muted);
+    background: var(--bg);
+    border: 1px solid var(--text-muted);
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0.65;
+    transition:
+        opacity 120ms ease,
+        background-color 120ms ease;
+}
+.copy-btn:hover,
+.copy-btn:focus-visible {
+    opacity: 1;
+}
+.copy-btn.copied {
+    opacity: 1;
+    background: var(--badge-live);
+    color: var(--badge-text);
+    border-color: var(--badge-live);
+}
+
+:not(pre) > code {
+    font-family: var(--font-code);
+    font-size: 0.875em;
+    background: var(--code-bg);
+    padding: 0.15em 0.35em;
+    border-radius: 4px;
+    border: 1px solid color-mix(in srgb, var(--text-muted) 35%, transparent);
+    white-space: break-spaces;
+}
+
+/* Prevent hljs from over-painting inline backgrounds */
+:not(pre) > code.hljs {
+    background: var(--code-bg);
+    padding: 0.15em 0.35em;
+}

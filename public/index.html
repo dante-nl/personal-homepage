@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>dante_nl</title>
+        <meta
+            name="description"
+            content="I build small and focused web tools, such as browser extensions, developer libraries and self-hosted utilities!"
+        />
+        <meta name="color-scheme" content="dark light" />
+        <link rel="canonical" href="https://dantenl.com/" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="dante_nl" />
+        <meta
+            property="og:description"
+            content="I build small and focused web tools, such as browser extensions, developer libraries and self-hosted utilities!"
+        />
+        <meta property="og:url" content="https://dantenl.com/" />
+        <meta property="og:image" content="https://dantenl.com/images/og.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <link
+            rel="preload"
+            href="/fonts/AtkinsonHyperlegibleNext.ttf"
+            as="font"
+            type="font/ttf"
+            crossorigin
+        />
+        <link rel="stylesheet" href="/style.css" />
+
+        <!-- run smol darkmode script to prevent flashbang -->
+        <script>
+            (() => {
+                let t;
+                try {
+                    t = localStorage.getItem('theme');
+                } catch {}
+                if (t !== 'light' && t !== 'dark') {
+                    t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                }
+                document.documentElement.dataset.theme = t;
+            })();
+        </script>
+    </head>
+
+    <body>
+        <a class="skip-link" href="#main">Skip to content</a>
+
+        <header class="site-header">
+            <a class="brand" href="/">dante_nl</a>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+                <span class="theme-toggle-label">Switch to light theme</span>
+            </button>
+        </header>
+
+        <main id="main">
+            <!-- main intro -->
+            <section class="hero">
+                <h1 class="tagged">Hi! I'm <span class="text-gradient">dante_nl</span></h1>
+                <p class="lede">
+                    I build small and focused web tools, such as browser extensions, developer
+                    libraries and self-hosted utilities!
+                </p>
+                <p class="actions">
+                    <a class="button" href="#projects">View projects</a>
+                    <!-- TODO: decide on whether or not to include one -->
+                    <a class="button button-ghost" href="/cv.pdf" download>Download CV (PDF)</a>
+                </p>
+            </section>
+
+            <!-- projects -->
+            <section id="projects" class="section">
+                <h2 class="tagged">Projects</h2>
+                <p class="section-note">
+                    A list of some of my projects I designed and built from end to end.
+                </p>
+
+                <!-- cards -->
+                <div class="grid">
+                    <!-- TODO: add the images and make the alt text -->
+                    <article class="card">
+                        <div class="card-media">
+                            <picture>
+                                <source srcset="/images/projects/sns.webp" type="image/webp" />
+                                <img
+                                    src="/images/projects/sns.png"
+                                    alt=""
+                                    width="1200"
+                                    height="750"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </picture>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-top">
+                                <h3><a href="/projects/sitecite">sitecite</a></h3>
+                                <span class="badge badge-live">Live</span>
+                            </div>
+                            <p class="card-summary">
+                                A self-hostable browser extension that shortens links and turns
+                                quotations into shareable images with extensive customisation
+                                options.
+                            </p>
+                            <ul class="stack" aria-label="Built with">
+                                <li>JavaScript</li>
+                                <li>Web Extensions</li>
+                                <li>CSS</li>
+                            </ul>
+                            <p class="card-year">2026</p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-media">
+                            <picture>
+                                <source srcset="/images/projects/sns.webp" type="image/webp" />
+                                <img
+                                    src="/images/projects/sns.png"
+                                    alt=""
+                                    width="1200"
+                                    height="750"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </picture>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-top">
+                                <h3><a href="/projects/umejs">umejs</a></h3>
+                                <span class="badge badge-live">Published</span>
+                            </div>
+                            <p class="card-summary">
+                                A library for Express designed to easily spin up websites from
+                                Markdown. Published on npm and used to generate this site. It's
+                                designed for other developers, with documentation and versioning.
+                            </p>
+                            <ul class="stack" aria-label="Built with">
+                                <li>Node</li>
+                                <li>Express</li>
+                                <li>Markdown</li>
+                            </ul>
+                            <p class="card-year">2026</p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-media">
+                            <div class="card-media">
+                                <picture>
+                                    <source srcset="/images/projects/sns.webp" type="image/webp" />
+                                    <img
+                                        src="/images/projects/sns.png"
+                                        alt="The SNS shortcut running on an iPhone, showing a notification arriving."
+                                        width="1200"
+                                        height="750"
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
+                                </picture>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-top">
+                                <h3><a href="/projects/sns">SNS</a></h3>
+                                <span class="badge">Live</span>
+                            </div>
+                            <p class="card-summary">
+                                An Express-backed notification relay for iOS Shortcuts, with
+                                accounts, tokens and channels, with a documented API other people's
+                                scripts can post to.
+                            </p>
+                            <ul class="stack" aria-label="Built with">
+                                <li>Node</li>
+                                <li>Express</li>
+                                <li>Shortcuts</li>
+                            </ul>
+                            <p class="card-year">2024</p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-media">
+                            <picture>
+                                <source srcset="/images/projects/sns.webp" type="image/webp" />
+                                <img
+                                    src="/images/projects/sns.png"
+                                    alt=""
+                                    width="1200"
+                                    height="750"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </picture>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-top">
+                                <h3><a href="/projects/custime">Custime</a></h3>
+                                <span class="badge">Live</span>
+                            </div>
+                            <p class="card-summary">
+                                A fully customisable clockface; easily change fonts, colours, with
+                                world time or current date! Easily customisable with templates or
+                                with a generator.
+                            </p>
+                            <ul class="stack" aria-label="Built with">
+                                <li>JavaScript</li>
+                                <li>HTML</li>
+                                <li>CSS</li>
+                            </ul>
+                            <p class="card-year">2022-2023</p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-media">
+                            <picture>
+                                <source srcset="/images/projects/sns.webp" type="image/webp" />
+                                <img
+                                    src="/images/projects/sns.png"
+                                    alt=""
+                                    width="1200"
+                                    height="750"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </picture>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-top">
+                                <h3><a href="/projects/pyplace">PyPlace</a></h3>
+                                <span class="badge badge-archived">Archived</span>
+                            </div>
+                            <p class="card-summary">
+                                A simple Python programme which allows downloading and running
+                                Python files through a simple UI, featuring a built-in store,
+                                multi-language support and an automatic updater for all downloaded
+                                projects.
+                            </p>
+                            <ul class="stack" aria-label="Built with">
+                                <li>Python</li>
+                            </ul>
+                            <p class="card-year">2022-2025</p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-media">
+                            <picture>
+                                <source srcset="/images/projects/sns.webp" type="image/webp" />
+                                <img
+                                    src="/images/projects/sns.png"
+                                    alt=""
+                                    width="1200"
+                                    height="750"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </picture>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-top">
+                                <h3><a href="/projects/lovehue">LoveHue</a></h3>
+                                <span class="badge badge-archived">Archived</span>
+                            </div>
+                            <p class="card-summary">
+                                A small Python utility which allows for controlling your Phillips
+                                Hue lights directly from the terminal, featuring an easy to use UI
+                                and animations for your lamps.
+                            </p>
+                            <ul class="stack" aria-label="Built with">
+                                <li>Python</li>
+                            </ul>
+                            <p class="card-year">2022</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Other work -->
+            <section id="other-work" class="section">
+                <h2 class="tagged">Other things I've built</h2>
+                <ul class="plain-list">
+                    <li>
+                        <strong>Discord bots</strong> (private, for a friend): a counting game bot,
+                        as well as a bot that allows for restoring player inventories on a private
+                        Minecraft server by utilising SFTP.
+                    </li>
+                    <li>
+                        <strong>
+                            <a
+                                href="https://lu7creative.net"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >LU7 Creative</a
+                            > </strong
+                        >: wrote various functionalities for a community Minecraft server in Skript,
+                        a domain specific language.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- About -->
+            <section id="about" class="section">
+                <h2 class="tagged">About</h2>
+                <p>
+                    Hi! I'm Dante and I live in The Netherlands! I've been building stuff since I've
+                    been about twelve years old. Even though I had three years of
+                    <i>informatica</i> in secondary school, it didn't teach me that much. I started
+                    with building Discord bots in Python, discovered Siri Shortcuts around 2019 and
+                    I've been doing various things since then. Siri Shortcuts got me interested in
+                    building my own websites and that's kind of where I've been stuck. I've done
+                    some projects in PHP, which started in 2022. From then on I did some smaller
+                    projects that didn't really end up becoming anything. Until 2025 that is, when I
+                    begun with Node.js. Since that moment, I have built quite a few projects with
+                    it. Most of what I've learnt comes from just trying stuff out! "I have never
+                    done it before, so I'm sure I can do it" has been kind of my motto, not just in
+                    coding, but also in life.
+                </p>
+                <p>
+                    I work mainly in Node and Express, with PHP, Python and vanilla JavaScript close
+                    behind. I self-host my own sites, and I try to make everything I build usable
+                    with a keyboard and a screen reader. My area of expertise is Node.js, especially
+                    in combination with Express. After that, vanilla JavaScript, Python and PHP are
+                    my preferred areas. I try to build my stuff for everyone, therefore I try and
+                    choose colour schemes that work for everyone and choose fonts such as
+                    <a
+                        href="https://www.brailleinstitute.org/freefont/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Atkinson Hyperlegible</a
+                    >.
+                </p>
+            </section>
+
+            <!-- Contact -->
+            <section id="contact" class="section">
+                <h2 class="tagged">Contact</h2>
+                <p>
+                    If you've got a question, some feedback, a nice word, or if you just want to say
+                    hi, you can either send me an <a href="mailto:dante@dantenl.com">e-mail</a> or
+                    you can contact me via this contact form!
+                </p>
+
+                <form id="contact-form" class="contact-form" method="post" action="/contact">
+                    <div class="hp" aria-hidden="true">
+                        <label for="website">Website</label>
+                        <input
+                            id="website"
+                            name="website"
+                            type="text"
+                            tabindex="-1"
+                            autocomplete="off"
+                        />
+                    </div>
+
+                    <p class="field">
+                        <label for="name">Name</label>
+                        <input
+                            id="name"
+                            name="name"
+                            type="text"
+                            autocomplete="name"
+                            maxlength="100"
+                        />
+                    </p>
+                    <p class="field">
+                        <label for="email">Email <span class="req">(required)</span></label>
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            autocomplete="email"
+                            required
+                            maxlength="254"
+                        />
+                    </p>
+                    <p class="field">
+                        <label for="message">Message <span class="req">(required)</span></label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="6"
+                            required
+                            minlength="10"
+                            maxlength="4000"
+                        ></textarea>
+                    </p>
+
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAAFxzmTZorTm1B8en"></div>
+
+                    <p class="field">
+                        <button class="button" type="submit">Send message</button>
+                    </p>
+
+                    <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+                    <p class="form-privacy">
+                        Your message is sent to me and used only to reply. Nothing is stored on this
+                        server.
+                    </p>
+                </form>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; <span id="year">2026</span> dante_nl</p>
+            <p class="footer-links">
+                <a href="https://github.com/dante-nl">GitHub</a>
+                <a href="mailto:you@dantenl.com">Email</a>
+            </p>
+        </footer>
+
+        <script src="/main.js" defer></script>
+
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    </body>
+</html>

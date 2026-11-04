@@ -1,0 +1,30 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark light" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link
+    rel="preload"
+    href="/fonts/AtkinsonHyperlegibleNext.ttf"
+    as="font"
+    type="font/ttf"
+    crossorigin
+/>
+<link rel="stylesheet" href="/style.css" />
+<script>
+    (() => {
+        let t;
+        try {
+            t = localStorage.getItem('theme');
+        } catch {}
+        if (t !== 'light' && t !== 'dark') {
+            t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.dataset.theme = t;
+    })();
+</script>
+
+<!-- highlight.js -->
+<link rel="stylesheet" href="/highlightjs/catpuccin-latte.min.css" id="hljs-theme-light" disabled />
+<link rel="stylesheet" href="/highlightjs/catpuccin-mocha.min.css" id="hljs-theme-dark" />
+
+<script src="/highlightjs/highlight.min.js" defer></script>

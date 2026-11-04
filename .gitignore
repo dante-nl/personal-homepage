@@ -1,0 +1,6 @@
+node_modules/
+.ume-ast-cache.json
+*.env
+!.env.example
+.vscode
+._DS_Store

@@ -1,0 +1,3 @@
+---
+_TEMPLATE: 'index'
+---

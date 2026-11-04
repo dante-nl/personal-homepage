@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {_INCLUDE("head.ume.html")}
+        <title>{title} — dante_nl</title>
+        <meta name="description" content="{summary}" />
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="{title} — dante_nl" />
+        <meta property="og:description" content="{summary}" />
+        <meta property="og:image" content="{siteUrl}{image}" />
+    </head>
+    <body>
+        {_INCLUDE("header.ume.html")}
+
+        <main id="main">
+            <article class="project-page">
+                <header class="project-hero">
+                    <div class="project-meta-top">
+                        <a href="/#projects" class="back-link">&larr; All projects</a>
+                        <span class="badge badge-{status}">{status}</span>
+                    </div>
+
+                    <h1 class="tagged">{title}</h1>
+                    <p class="lede">{summary}</p>
+
+                    <div class="project-links">
+                        <a class="button" href="{demo}" target="_blank" rel="noopener noreferrer"
+                            >View live</a
+                        >
+                        <a
+                            class="button button-ghost"
+                            href="{repo}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >Source code</a
+                        >
+                    </div>
+
+                    <p class="project-stack">
+                        <strong>Stack:</strong> <span>{stack}</span> &middot; <span>{year}</span>
+                    </p>
+
+                    <div class="project-hero-image">
+                        <picture>
+                            <source srcset="{image}" type="image/webp" />
+                            <img
+                                src="{image}"
+                                alt="Screenshot of {title}"
+                                width="1600"
+                                height="900"
+                                loading="eager"
+                                decoding="async"
+                            />
+                        </picture>
+                    </div>
+                </header>
+
+                <!-- This is where the Markdown content from content/projects/*.md goes -->
+                <div class="project-content prose">{_BODY}</div>
+            </article>
+        </main>
+
+        {_INCLUDE("footer.ume.html")}
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>404 | dante_nl</title>
+
+        <meta name="color-scheme" content="dark light" />
+
+        <link
+            rel="preload"
+            href="/fonts/AtkinsonHyperlegibleNext.ttf"
+            as="font"
+            type="font/ttf"
+            crossorigin
+        />
+        <link rel="stylesheet" href="/style.css" />
+
+        <!-- run smol darkmode script to prevent flashbang -->
+        <script>
+            (() => {
+                let t;
+                try {
+                    t = localStorage.getItem('theme');
+                } catch {}
+                if (t !== 'light' && t !== 'dark') {
+                    t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                }
+                document.documentElement.dataset.theme = t;
+            })();
+        </script>
+    </head>
+
+    <body>
+        <a class="skip-link" href="#main">Skip to content</a>
+
+        <header class="site-header">
+            <a class="brand" href="/">dante_nl</a>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+                <span class="theme-toggle-label">Switch to light theme</span>
+            </button>
+        </header>
+
+        <main id="main">
+            <!-- main intro -->
+            <section>
+                <h1>404</h1>
+                <p>
+                    The page you were looking for could not be found. Unless you were looking for
+                    the 404 page.
+                </p>
+
+                <a href="/">Go home?</a>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; <span id="year">2026</span> dante_nl</p>
+            <p class="footer-links">
+                <a href="https://github.com/dante-nl">GitHub</a>
+                <a href="mailto:you@dantenl.com">Email</a>
+            </p>
+        </footer>
+
+        <script src="/main.js" defer></script>
+    </body>
+</html>
