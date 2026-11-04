@@ -59,6 +59,7 @@ const umeConfig = ume({
     },
     builders: [projectsIndexBuilder],
     nextUsage: true,
+    parallel: true,
 });
 
 // builders
