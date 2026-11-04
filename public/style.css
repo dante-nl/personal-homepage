@@ -1,6 +1,4 @@
-/* ---------------------------------------------------------------------------
-   Fonts — self-hosted, one file per weight
-   --------------------------------------------------------------------------- */
+/* # fonts */
 /* ! Fonts are under a seperate license, view it at ./fonts/LICENSE.txt ! */
 @font-face {
     font-family: 'Atkinson Hyperlegible Next';
@@ -33,10 +31,8 @@
     font-style: italic;
     font-display: swap;
 }
-/* ---------------------------------------------------------------------------
-   Tokens
-   --------------------------------------------------------------------------- */
-/* --- tokens --- */
+
+/* # tokens */
 :root {
     color-scheme: dark;
     --bg: #2d3047;
@@ -46,11 +42,9 @@
     --link: #00a8e8;
     --link-hover: #5cc8f2;
 
-    /* Gradient text (must contrast with --bg) */
     --text-grad-a: #ff51eb;
     --text-grad-b: #ede342;
 
-    /* Gradient fills (paired with dark text on the fill) — stay bright */
     --fill-grad-a: #ff51eb;
     --fill-grad-b: #ede342;
 
@@ -76,11 +70,9 @@
     --link: #0063a6;
     --link-hover: #00456f;
 
-    /* Darkened for readable gradient *text* on light bg */
     --text-grad-a: #d6006e;
     --text-grad-b: #b84d00;
 
-    /* Fill gradient stays bright in light mode — paired with --badge-text */
     --fill-grad-a: #ff51eb;
     --fill-grad-b: #ede342;
 
@@ -90,9 +82,7 @@
     --focus: #005f9e;
 }
 
-/* ---------------------------------------------------------------------------
-   Base
-   --------------------------------------------------------------------------- */
+/* # base styling */
 *,
 *::before,
 *::after {
@@ -143,9 +133,7 @@ img {
     display: block;
 }
 
-/* ---------------------------------------------------------------------------
-   Utilities
-   --------------------------------------------------------------------------- */
+/* # utilities  */
 .skip-link {
     position: absolute;
     left: -9999px;
@@ -167,9 +155,6 @@ img {
     -webkit-text-fill-color: transparent;
 }
 
-/* Code-tag decoration. The string after the slash is the accessible
-   alternative text — empty means "decorative, skip it". Browsers that
-   don't support that syntax will read the tag aloud; acceptable. */
 .tagged {
     position: relative;
 }
@@ -205,7 +190,6 @@ h2.tagged::after {
     content: none;
 }
 
-/* Tighten heading bottom margin now that ::after adds a line */
 h1.tagged {
     margin-bottom: 0.5em;
 }
@@ -213,9 +197,7 @@ h2.tagged {
     margin-bottom: 0.5em;
 }
 
-/* ---------------------------------------------------------------------------
-   Layout
-   --------------------------------------------------------------------------- */
+/* # layout */
 .site-header,
 main,
 .site-footer {
@@ -349,9 +331,7 @@ main,
     margin: 0;
 }
 
-/* ---------------------------------------------------------------------------
-   Cards
-   --------------------------------------------------------------------------- */
+/* # cards */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
@@ -415,7 +395,7 @@ main,
 .card-top h3 a::after {
     content: '';
     position: absolute;
-    inset: 0; /* stretched link: whole card is clickable */
+    inset: 0;
 }
 
 .card-summary {
@@ -461,9 +441,7 @@ main,
     color: var(--text-muted);
 }
 
-/* ---------------------------------------------------------------------------
-   Other work
-   --------------------------------------------------------------------------- */
+/* # other work section */
 .plain-list {
     padding-left: 1.25rem;
     max-width: var(--measure);
@@ -472,9 +450,7 @@ main,
     margin-bottom: 0.75rem;
 }
 
-/* ---------------------------------------------------------------------------
-   Contact form
-   --------------------------------------------------------------------------- */
+/* # contact form */
 .contact-form {
     max-width: 34rem;
 }
@@ -532,9 +508,7 @@ textarea {
     color: var(--text-muted);
 }
 
-/* ---------------------------------------------------------------------------
-   Motion / print
-   --------------------------------------------------------------------------- */
+/* # reduce motione */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -547,9 +521,7 @@ textarea {
     }
 }
 
-/* ---------------------------------------------------------------------------
-   Project Page
-   --------------------------------------------------------------------------- */
+/* # project page */
 .project-page {
     max-width: 52rem;
     margin-inline: auto;
@@ -581,7 +553,6 @@ textarea {
     margin-bottom: 1.5rem;
 }
 
-/* Hide empty links (like an empty repo link) */
 .project-links a[href=''] {
     display: none;
 }
@@ -606,7 +577,7 @@ textarea {
     display: block;
 }
 
-/* Markdown body styles (prose) */
+/* * markdown body (prose) */
 .prose {
     line-height: 1.7;
 }
@@ -698,7 +669,6 @@ textarea {
     white-space: break-spaces;
 }
 
-/* Prevent hljs from over-painting inline backgrounds */
 :not(pre) > code.hljs {
     background: var(--code-bg);
     padding: 0.15em 0.35em;
