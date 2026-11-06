@@ -1,5 +1,5 @@
 ---
-title: custime
+title: Custime
 summary: Fully customisable clockface
 status: published
 year: '2022-2023'
